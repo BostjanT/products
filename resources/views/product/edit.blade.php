@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto px-4">
-        <h1 class="text-2xl font-bold mb-6">Edit Product</h1>
+    <div class="container max-w-5xl mx-auto px-4 bg-slate-300 rounded-2xl shadow p-6 space-y-4">
+        <h1 class="text-2xl font-bold mb-6 dark:text-slate-200">Edit Product</h1>
 
         {{-- Display validation errors --}}
         @if ($errors->any())
@@ -15,8 +15,7 @@
             </div>
         @endif
 
-        <form action="{{ route('product.update', $product) }}" method="POST" enctype="multipart/form-data"
-            class="bg-white rounded-2xl shadow p-6 space-y-4">
+        <form action="{{ route('product.update', $product) }}" method="POST" enctype="multipart/form-data" class="">
             @csrf
             @method('PUT')
             <div>
@@ -67,17 +66,17 @@
                     class="px-6 py-3 bg-gray-500 text-white rounded-xl shadow hover:bg-gray-600 transition">
                     Cancel
                 </a>
-                <form action="{{ route('product.destroy', $product) }}" method="POST"
-                    onsubmit="return confirm('Are you sure you want to delete this product?');"
-                    class="bg-white rounded-2xl shadow p-6">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="px-6 py-3 bg-red-600 text-white rounded-xl shadow hover:bg-red-700 transition">
-                        Delete
-                    </button>
-                </form>
+
             </div>
-        </form>      
+        </form>
+        <form action="{{ route('product.destroy', $product) }}" method="POST"
+            onsubmit="return confirm('Are you sure you want to delete this product?');"
+            class="bg-slate-300 rounded-2xl shadow p-6">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="px-6 py-3 bg-red-600 text-white rounded-xl shadow hover:bg-red-700 transition">
+                Delete
+            </button>
+        </form>
     </div>
 @endsection

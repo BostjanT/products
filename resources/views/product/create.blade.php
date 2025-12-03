@@ -16,13 +16,13 @@
         @endif
 
         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data"
-            class="bg-gray-600 rounded-2xl dark:text-white shadow p-6 max-w-lg mx-auto space-y-4">
+            class="bg-transparent rounded-2xl  shadow p-6 max-w-lg mx-auto space-y-4">
             @csrf
             <div class="flex flex-col gap-4">
                 <div>
                     <label class="block font-medium">Name</label>
                     <input type="text" name="name" value="{{ old('name') }}"
-                        class="w-full border rounded-md p-2 focus:ring focus:ring-blue-200 @error('name') border-red-500 @enderror">
+                        class="w-full border bg-slate-200 rounded-md p-2 focus:ring focus:ring-blue-200 @error('name') border-red-500 @enderror">
                     @error('name')
                         <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
@@ -48,9 +48,9 @@
 
 
             <div>
-                <label class="block font-medium">Image</label>
+                <label class="block font-medium dark:text-slate-200">Image</label>
                 <input type="file" name="image_url" accept="image/*"
-                    class="w-full rounded-md my-4 focus:ring focus:ring-blue-200 @error('image_url') border-red-500 @enderror">
+                    class="w-full rounded-md my-4 focus:ring focus:ring-blue-200 dark:text-slate-200 @error('image_url') border-red-500 @enderror">
                 @error('image_url')
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
@@ -58,7 +58,7 @@
 
             <div class="flex gap-4">
                 <button type="submit"
-                    class="px-4 py-1 bg-green-600 text-white rounded-xl shadow hover:bg-green-700 transition">
+                    class="px-4 py-1 bg-green-600 dark:text-white rounded-xl shadow hover:bg-green-700 transition">
                     Save Product
                 </button>
                 <a href="{{ route('product.index') }}"
